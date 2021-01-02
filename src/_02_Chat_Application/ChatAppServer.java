@@ -65,7 +65,7 @@ public class ChatAppServer {
 	public void sendClick() {
 		try {
 			if (os != null) {
-				os.writeObject("CLICK SENT FROM SERVER");
+				os.writeObject("Send your message");
 				os.flush();
 			}
 		} catch (IOException e) {

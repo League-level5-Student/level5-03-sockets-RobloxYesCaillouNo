@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class ChatAppClient {
 	private String ip;
 	private int port;
-
+	
 	Socket connection;
 
 	ObjectOutputStream os;
@@ -20,7 +20,7 @@ public class ChatAppClient {
 		this.ip = ip;
 		this.port = port;
 	}
-
+	
 	public void start(){
 		try {
 
@@ -28,7 +28,7 @@ public class ChatAppClient {
 
 			os = new ObjectOutputStream(connection.getOutputStream());
 			is = new ObjectInputStream(connection.getInputStream());
-
+			
 			os.flush();
 
 			
@@ -40,7 +40,7 @@ public class ChatAppClient {
 		while (connection.isConnected()) {
 			try {
 				JOptionPane.showMessageDialog(null, is.readObject());
-				System.out.println(is.readObject());
+				System.out.print(is.readObject());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -51,7 +51,7 @@ public class ChatAppClient {
 	public void sendClick() {
 		try {
 			if (os != null) {
-				os.writeObject(JOptionPane.showInputDialog("Send message"));
+				os.writeObject("Send your message");
 				os.flush();
 			}
 		} catch (IOException e) {
